@@ -3,16 +3,28 @@
 #2. 엔드포인트 노출
 #엔드포인트는 대부분 기본으로 활성화 되어 있다.( shutdown 제외) 노출이 되어 있지 않을 뿐이다.
 #특정 엔드포인트를 활성화 하려면 management.endpoint.{엔드포인트명}.enabled=true 를 적용하면 된다.
-#db , mongo , redis , diskspace , ping 과 같은 수 많은 헬스 기능을 기본으로 제공한다.
 #include: "*" 모든 엔드포인트 노출
 management:
+  info:  #info는 management.info.~ , JAVA,OS는 true로 설정하지 않으면 기본적으로는 노출되지 않는다.
+    java:
+      enabled: true
+    os:
+      enabled: true
+    env: #env는 밑에 info.~~~로 적어놓은것들이 노출된다.
+      enabled: true
   endpoint:
     shutdown:
       enabled: true
-    health:
+    health:   # health. db , mongo , redis , diskspace , ping 과 같은 수 많은 헬스 기능을 기본으로 제공한다. , 헬스 컴포넌트 중에 하나라도 문제 있으면 전체 상태는 DOWN
       show-details: always
-#      show-components: always  각 헬스 컴포넌트 상태의 정보만 간략하게 노출. 헬스 컴포넌트 중에 하나라도 문제 있으면 전체 상태는 DOWN
+#      show-components: always  각 헬스 컴포넌트 상태의 정보만 간략하게 노출.
   endpoints:
     web:
       exposure:
         include: "*"
+
+#env 활성화시 노출되는 정보들.
+info:
+  app:
+    name: hello-actuator
+    company: yh

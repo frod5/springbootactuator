@@ -4,6 +4,10 @@
 #엔드포인트는 대부분 기본으로 활성화 되어 있다.( shutdown 제외) 노출이 되어 있지 않을 뿐이다.
 #특정 엔드포인트를 활성화 하려면 management.endpoint.{엔드포인트명}.enabled=true 를 적용하면 된다.
 #include: "*" 모든 엔드포인트 노출
+
+#액츄에이터를 다른 포트에서 실행
+#예를 들어서 외부 인터넷 망을 통해서 8080 포트에만 접근할 수 있고, 다른 포트는 내부망에서만 접근할 수 있다면 액츄에이터에 다른 포트를 설정하면 된다.
+#액츄에이터의 기능을 애플리케이션 서버와는 다른 포트에서 실행하려면 다음과 같이 설정하면 된다. 이 경우 기존 8080 포트에서는 액츄에이터를 접근할 수 없다.
 management:
   info:  #info는 management.info.~ , JAVA,OS는 true로 설정하지 않으면 기본적으로는 노출되지 않는다.
     java:
@@ -12,6 +16,8 @@ management:
       enabled: true
     env: #env는 밑에 info.~~~로 적어놓은것들이 노출된다.
       enabled: true
+  server:
+    port: 8080
   endpoint:
     shutdown:
       enabled: true
@@ -20,8 +26,12 @@ management:
 #      show-components: always  각 헬스 컴포넌트 상태의 정보만 간략하게 노출.
   endpoints:
     web:
+#      base-path: "/manage"  엔드포인트의 기본 경로를 변경하려면 다음과 같이 설정하면 된다.
       exposure:
         include: "*"
+
+
+
 
 #env 활성화시 노출되는 정보들.
 info:

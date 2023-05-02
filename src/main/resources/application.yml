@@ -28,3 +28,8 @@ info:
   app:
     name: hello-actuator
     company: yh
+
+#hello.controller 패키지와 그 하위는 debug 레벨을 출력
+logging:
+  level:
+    hello.controller: debug

@@ -43,3 +43,9 @@ info:
 logging:
   level:
     hello.controller: debug
+
+#마이크로미터 다양한 메트릭중 톰캣에대한 더 상세한 정보를 보고싶을떄 설정한다.
+server:
+  tomcat:
+    mbeanregistry:
+      enabled: true

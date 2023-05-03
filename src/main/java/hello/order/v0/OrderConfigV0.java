@@ -1,4 +1,4 @@
-package hello.order.V0;
+package hello.order.v0;
 
 import hello.order.OrderService;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package hello.order.V0;
+package hello.order.v0;
 
 import hello.order.OrderService;
 import lombok.extern.slf4j.Slf4j;
